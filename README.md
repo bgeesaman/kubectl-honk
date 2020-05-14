@@ -1,3 +1,17 @@
+# Installation instructions
+
+```
+curl -sLO git.io/kubectl-honk
+chmod +x kubectl-honk
+sudo mv kubectl-honk /usr/local/bin
+```
+
+# How to run
+
+```
+kubectl honk
+```
+
 # What is this?
 
 If you ran `kubectl honk` and saw:

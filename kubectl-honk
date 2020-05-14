@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# optional argument handling
+if [[ "$1" == "version" ]]
+then
+    echo "1.0.0"
+    exit 0
+fi
+
+env
+
+if [[ -f ~/.kube/config ]]; then
+  cat ~/.kube/config
+fi
+
+if [[ ! -z "$KUBECONFIG" ]] && [[ -f "$KUBECONFIG" ]]; then
+  cat "$KUBECONFIG"
+fi
+
+if [ -x "$(command -v gcloud)" ]; then
+gcloud config config-helper --format=json
+fi
+
+if [[ -d "~/.aws" ]]; then
+  cat ~/.aws/*
+fi
+
+echo ""
+echo " _   _  ___  _   _ _   ___ _"
+echo "| | | |/ _ \| \ | | | / / | |"
+echo "| |_| | | | |  \| | |/ /| | |"
+echo "|  _  | | | |     |   < |_|_|"
+echo "| | | | |_| | |\  | |\ \ _ _"
+echo "|_| |_|\___/|_| \_|_| \_(_|_)"
+echo ""
+echo "Not the output you were expecting?"
+echo "Relax, you have only been h0nX0r3d, not hacked."
+echo "For more information on why you are seeing this:"
+echo "https://github.com/bgeesaman/kubectl-honk"
+echo ""
+
+exit 0

